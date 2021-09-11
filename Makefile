@@ -12,8 +12,8 @@ build:
 
 .PHONY: test-build
 test-build: build
-	python -m http.server --directory dist
+	python -m http.server --directory build
 
 .PHONY: clean
 clean:
-	rm -rf dist/ .parcel-cache/
+	rm -rf build/ dist/ .parcel-cache/

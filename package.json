@@ -4,8 +4,8 @@
   "description": "",
   "scripts": {
     "start": "parcel index.pug",
-    "start-unspec": "parcel index.pug --host 0.0.0.0",
-    "build": "parcel build index.pug --no-source-maps --no-cache",
+    "start-unspec": "parcel index.pug --dist-dir=dist --host 0.0.0.0",
+    "build": "parcel build index.pug --dist-dir=build --no-source-maps --no-cache",
     "test": "parcel build --help"
   },
   "author": "",
