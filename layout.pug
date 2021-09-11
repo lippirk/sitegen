@@ -1,0 +1,37 @@
+mixin navbar
+  | <ul id="navbar">
+  |   <div>
+  |     <li><a href="/">/</a></li>
+  //- |     <li><a href="/">/dev</a></li>
+  //- |     <li><a href="/">/etc</a></li>
+  |   </div>
+  |   <li><a href="#" id="ztoggle">Z</a>
+  | </ul>
+
+mixin footer
+  | <div id="footer">
+  |   <ul>
+  |     <li>
+  //- |       Some information I'd like to display on every page
+  |     </li>
+  |   </ul>
+  | </div>
+
+mixin head-default
+  | <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  | <meta name="viewport" content="width=device-width, initial-scale=1" />
+  | <link rel="stylesheet" type="text/css" href="/index.css"/>
+
+doctype html
+html(lang="en")
+  head
+    +head-default
+    block head-extra
+  body
+    +navbar
+    div.root
+      div.container
+        block content
+      +footer
+    script(type="module", src="/index.js", defer)
+    block script

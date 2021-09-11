@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "skipLibCheck": true,
+      "moduleResolution": "node",
+      "module": "umd",
+      "target": "es2015",
+      "declaration": true,
+      "outDir": "dist"
+    },
+    "include": [
+      "lib/index.ts"
+    ],
+    "exclude": []
+}

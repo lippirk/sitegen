@@ -1,0 +1,24 @@
+{
+  "name": "content",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "start": "parcel index.pug",
+    "start-unspec": "parcel index.pug --host 0.0.0.0",
+    "build": "parcel build index.pug --no-source-maps --no-cache",
+    "test": "parcel build --help"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-inline-string": "^2.0.0-rc.0",
+    "@parcel/transformer-pug": "^2.0.0-rc.0",
+    "parcel": "^2.0.0-rc.0",
+    "parcel-namer-namer": "file:parcel-namer-namer",
+    "parcel-transformer-pandoc": "file:parcel-transformer-pandoc"
+  },
+  "dependencies": {
+    "puppeteer": "^10.2.0",
+    "puppeteer-extra": "^3.1.18"
+  }
+}

@@ -1,0 +1,65 @@
+var apples >= 0;
+var bananas >= 0;
+var smoked_salmon >= 0;
+var pork_pie >= 0;
+var whole_chicken_raw >= 0;
+var chicken_breast_fillets >= 0;
+var custard_creams >= 0;
+var eggs >= 0;
+var milk >= 0;
+var bell_peppers >= 0;
+var chillies >= 0;
+var garlic_bulb >= 0;
+var ginger >= 0;
+var strawberries >= 0;
+var blueberries >= 0;
+var raspberries >= 0;
+var raspberry_jam >= 0;
+var bourbon_creams >= 0;
+var salmon_fillet >= 0;
+var rocket >= 0;
+var frozen_peas >= 0;
+var green_beans >= 0;
+var stella_artois >= 0;
+var salad_tomatoes >= 0;
+var cherry_tomatoes >= 0;
+var maris_piper_potatoes >= 0;
+var carrots >= 0;
+var cauliflower >= 0;
+var onions >= 0;
+var asparagus >= 0;
+var mince >= 0;
+var oregano >= 0;
+var turmeric >= 0;
+var black_pepper >= 0;
+var salt >= 0;
+var sausages >= 0;
+var almonds >= 0;
+var cashew_nuts >= 0;
+var peanuts >= 0;
+var salt_and_vinegar_crisps >= 0;
+var peanut_butter >= 0;
+var butter >= 0;
+var pasta >= 0;
+var basmati_rice >= 0;
+var tinned_tomatoes >= 0;
+var coconut_milk >= 0;
+var bread >= 0;
+
+
+minimize z: 2.7 * apples + 0.73 * bananas + 29.2 * smoked_salmon + 6 * pork_pie + 2.27 * whole_chicken_raw + 5.08 * chicken_breast_fillets + 1.1 * custard_creams + 3 * eggs + 0.46 * milk + 2.7 * bell_peppers + 10 * chillies + 4.17 * garlic_bulb + 5.25 * ginger + 5 * strawberries + 12 * blueberries + 12 * raspberries + 4.4 * raspberry_jam + 1.5 * bourbon_creams + 8 * salmon_fillet + 16.7 * rocket + 2.5 * frozen_peas + 12.5 * green_beans + 2.45 * stella_artois + 2.09 * salad_tomatoes + 2.73 * cherry_tomatoes + 0.46 * maris_piper_potatoes + 0.4 * carrots + 1.36 * cauliflower + 0.85 * onions + 14.4 * asparagus + 5.18 * mince + 50 * oregano + 19 * turmeric + 18 * black_pepper + 0.47 * salt + 6 * sausages + 14 * almonds + 11.6 * cashew_nuts + 6.67 * peanuts + 10 * salt_and_vinegar_crisps + 2.7 * peanut_butter + 5.92 * butter + 1 * pasta + 1.6 * basmati_rice + 0.7 * tinned_tomatoes + 2.21 * coconut_milk + 1.2 * bread;
+
+
+subject to constraint_salt: 34 * smoked_salmon + 10 * pork_pie + 3 * whole_chicken_raw + 3 * chicken_breast_fillets + 5 * custard_creams + 4 * eggs + 1 * milk + 1 * chillies + 1 * ginger + 1 * strawberries + 2 * raspberry_jam + 2 * bourbon_creams + 2 * salmon_fillet + 2 * rocket + 1 * carrots + 1 * cauliflower + 3 * mince + 1 * oregano + 1 * turmeric + 1 * black_pepper + 1 * salt + 13 * sausages + 1 * almonds + 1 * cashew_nuts + 16 * salt_and_vinegar_crisps + 8 * peanut_butter + 15 * butter + 1 * pasta + 1 * basmati_rice + 1 * tinned_tomatoes + 1 * coconut_milk + 9 * bread <= 6;
+
+subject to constraint_fat: 100 * apples + 1 * bananas + 99 * smoked_salmon + 223 * pork_pie + 131 * whole_chicken_raw + 20 * chicken_breast_fillets + 205 * custard_creams + 90 * eggs + 17 * milk + 2 * bell_peppers + 6 * chillies + 6 * garlic_bulb + 6 * ginger + 1 * strawberries + 3 * blueberries + 3 * raspberries + 5 * raspberry_jam + 214 * bourbon_creams + 27 * salmon_fillet + 1 * rocket + 7 * frozen_peas + 4 * green_beans + 1 * salad_tomatoes + 5 * cherry_tomatoes + 1 * maris_piper_potatoes + 3 * carrots + 9 * cauliflower + 1 * onions + 6 * asparagus + 45 * mince + 102 * oregano + 99 * turmeric + 33 * black_pepper + 253 * sausages + 558 * almonds + 509 * cashew_nuts + 495 * peanuts + 289 * salt_and_vinegar_crisps + 509 * peanut_butter + 822 * butter + 7 * pasta + 10 * basmati_rice + 1 * tinned_tomatoes + 156 * coconut_milk + 17 * bread >= 70;
+
+subject to constraint_protein: 400 * apples + 12 * bananas + 223 * smoked_salmon + 104 * pork_pie + 200 * whole_chicken_raw + 271 * chicken_breast_fillets + 57 * custard_creams + 126 * eggs + 35 * milk + 12 * bell_peppers + 29 * chillies + 79 * garlic_bulb + 14 * ginger + 8 * strawberries + 7 * blueberries + 14 * raspberries + 8 * raspberry_jam + 63 * bourbon_creams + 200 * salmon_fillet + 35 * rocket + 49 * frozen_peas + 21 * green_beans + 4 * stella_artois + 5 * salad_tomatoes + 11 * cherry_tomatoes + 18 * maris_piper_potatoes + 6 * carrots + 36 * cauliflower + 10 * onions + 29 * asparagus + 208 * mince + 110 * oregano + 78 * turmeric + 109 * black_pepper + 163 * sausages + 211 * almonds + 205 * cashew_nuts + 269 * peanuts + 43 * salt_and_vinegar_crisps + 250 * peanut_butter + 6 * butter + 58 * pasta + 34 * basmati_rice + 11 * tinned_tomatoes + 9 * coconut_milk + 87 * bread >= 50;
+
+subject to constraint_carb: 118 * apples + 203 * bananas + 15 * smoked_salmon + 273 * pork_pie + 4 * chicken_breast_fillets + 701 * custard_creams + 1 * eggs + 46 * milk + 53 * bell_peppers + 7 * chillies + 163 * garlic_bulb + 72 * ginger + 60 * strawberries + 145 * blueberries + 46 * raspberries + 594 * raspberry_jam + 659 * bourbon_creams + 11 * salmon_fillet + 6 * rocket + 75 * frozen_peas + 30 * green_beans + 32 * stella_artois + 30 * salad_tomatoes + 36 * cherry_tomatoes + 175 * maris_piper_potatoes + 79 * carrots + 30 * cauliflower + 80 * onions + 20 * asparagus + 216 * oregano + 438 * turmeric + 443 * black_pepper + 34 * sausages + 69 * almonds + 188 * cashew_nuts + 96 * peanuts + 568 * salt_and_vinegar_crisps + 114 * peanut_butter + 6 * butter + 357 * pasta + 323 * basmati_rice + 38 * tinned_tomatoes + 33 * coconut_milk + 446 * bread >= 260;
+
+subject to constraint_sugar: 118 * apples + 181 * bananas + 3 * smoked_salmon + 14 * pork_pie + 1 * chicken_breast_fillets + 283 * custard_creams + 1 * eggs + 46 * milk + 51 * bell_peppers + 7 * chillies + 16 * garlic_bulb + 24 * ginger + 60 * strawberries + 100 * blueberries + 46 * raspberries + 548 * raspberry_jam + 252 * bourbon_creams + 2 * rocket + 49 * frozen_peas + 22 * green_beans + 3 * stella_artois + 30 * salad_tomatoes + 36 * cherry_tomatoes + 8 * maris_piper_potatoes + 74 * carrots + 25 * cauliflower + 62 * onions + 19 * asparagus + 41 * oregano + 32 * turmeric + 6 * black_pepper + 4 * sausages + 42 * almonds + 56 * cashew_nuts + 34 * peanuts + 13 * salt_and_vinegar_crisps + 60 * peanut_butter + 6 * butter + 11 * pasta + 1 * basmati_rice + 38 * tinned_tomatoes + 20 * coconut_milk + 35 * bread <= 30;
+
+subject to constraint_energy: 2255 * apples + 3800 * bananas + 7750 * smoked_salmon + 14760 * pork_pie + 8250 * whole_chicken_raw + 5430 * chicken_breast_fillets + 20560 * custard_creams + 5470 * eggs + 2010 * milk + 1320 * bell_peppers + 830 * chillies + 4660 * garlic_bulb + 1840 * ginger + 1280 * strawberries + 2890 * blueberries + 1330 * raspberries + 10510 * raspberry_jam + 20410 * bourbon_creams + 4590 * salmon_fillet + 910 * rocket + 2850 * frozen_peas + 1290 * green_beans + 1634 * stella_artois + 710 * salad_tomatoes + 1090 * cherry_tomatoes + 3450 * maris_piper_potatoes + 1750 * carrots + 1600 * cauliflower + 1660 * onions + 1220 * asparagus + 5200 * mince + 12740 * oregano + 14120 * turmeric + 12730 * black_pepper + 12790 * sausages + 26250 * almonds + 25860 * cashew_nuts + 25100 * peanuts + 21420 * salt_and_vinegar_crisps + 25610 * peanut_butter + 30620 * butter + 7480 * pasta + 6480 * basmati_rice + 930 * tinned_tomatoes + 6483 * coconut_milk + 9870 * bread >= 8400;
+
+end;

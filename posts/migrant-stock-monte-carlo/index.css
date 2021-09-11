@@ -1,0 +1,16 @@
+input[type="range"] {
+    width: 100%;
+}
+
+button {
+    width: 100%;
+}
+
+image {
+    outline: 1px solid black;
+}
+
+text {
+    text-anchor: end;
+    dominant-baseline: middle;
+}

@@ -1,0 +1,227 @@
+/*
+ * todo: use scss
+ *
+ * magic numbers:
+ * - height navbar = 2.5em
+ *
+ * colors:
+ * - #f0f    = magenta
+ * - #f7f    = medium magenta
+ * - #ffd9ff = light magenta
+ * - #f3f3f3 = grey
+ * - #24292e = black (text)
+ * - green   = #48eb12
+ * - red     = #ff2b2b
+ * - blue    = #00a7fa
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+
+html, body {
+  height: 100%;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Ubuntu Mono', monospace;
+  color: #24292e;
+}
+
+
+.center-children {
+  display: flex;
+  justify-content: center;
+}
+
+.root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  /* min-height = window height - height of navbar */
+  min-height: calc(100vh - 2.5em);
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* stop content 'jump' when scrollbar appears
+   * doesn't seem to work so great on mobile
+   * margin-left: calc(100vw - 100%); */
+}
+
+/* magic to stop margin/padding affecting widths/heights
+ * https://stackoverflow.com/a/17886520 */
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+   box-sizing: border-box;
+}
+
+/* don't overrun parent */
+p {
+  word-wrap: break-word;
+}
+
+.pad-lr {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+/* mobile */
+@media only screen and (max-width: 600px) {
+  .container {
+    width: 100%;
+  }
+
+  .root {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  #ztoggle {
+    visibility: hidden;
+  }
+}
+
+/* desktop */
+@media only screen and (min-width: 600px) {
+  .container {
+    width: 60%;
+  }
+}
+
+#navbar {
+  height: 2.5em;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ffd9ff;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#navbar li a {
+  display: block;
+  text-align: center;
+  padding: 0.5em 0.5em;
+  text-decoration: none;
+  height: 100%;
+  min-width: 2.5em;
+  color: #24292e;
+}
+
+#navbar div {
+  display: flex;
+}
+
+#navbar li a:hover {
+  background-color: #f0f;
+  color: white;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.no-highlight {
+  outline-style: none;
+  user-select: none;
+}
+
+
+#footer {
+  margin-top: auto;
+  align-self: left;
+  width: 100%;
+}
+
+#footer li {
+  font-size: 1em;
+  color: #586069;
+}
+
+#footer ul {
+  list-style: none;
+}
+
+.fillwidth {
+  width: 100%;
+}
+
+/* only style below ==> safe to hack on */
+a {
+  outline: 0;
+  color: #f0f;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+hr {
+  border: 1px solid #ffd9ff;
+  background-color: #ffd9ff;
+  width: 100%;
+}
+
+button {
+  background-color: #f3f3f3;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  height: 2em;
+  margin: 0;
+}
+
+button:hover {
+  background-color: #f0f;
+  color: white;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #f3f3f3;
+  outline: none;
+  height: 2em;
+  border: none;
+  margin: 0;
+  border-radius: 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #f0f;
+  cursor: pointer;
+  height: 2em;
+  width: 2em;
+}
+
+input[type="range"]::-moz-range-thumb {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 0;
+  appearance: none;
+  background: #f0f;
+  cursor: pointer;
+  height: 2em;
+  width: 2em;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: #f0f;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  background: #f0f;
+}

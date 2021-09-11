@@ -1,0 +1,15 @@
+{
+  "name": "parcel-transformer-loc",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "engines": {
+    "node": ">= 12.0.0",
+    "parcel": "^2.0.0-beta.3"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@parcel/plugin": "^2.0.0-beta.3"
+  }
+}

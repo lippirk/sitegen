@@ -1,0 +1,11 @@
+1.  [x] button to toggle max screen width
+2.  [x] fix migration figures
+3.  [x] fix strange /index.js output location https://github.com/VladimirMikulic/parcel-plugin-custom-dist-structure
+        hacked around this with parcel-namer-namer
+4.  [x] fix migrant-stock svg not being displayed correctly with _prod_ build
+5.  [x] fix parcel-transformer-pandoc in _dev_ node
+6.  [ ] add favicon
+7.  [x] CC attributions for UN data
+8.  [ ] autogenerate index.html to include metadata like date + tags etc.
+9.  [ ] dark theme?
+10. [ ] readme

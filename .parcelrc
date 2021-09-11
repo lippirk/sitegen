@@ -1,0 +1,7 @@
+{
+	"extends": "@parcel/config-default",
+	"transformers": {
+		"*.md": ["parcel-transformer-pandoc"],
+	},
+	"namers": ["parcel-namer-namer", "..."]
+}

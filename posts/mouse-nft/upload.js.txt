@@ -1,0 +1,146 @@
+const process = require("process");
+const puppeteer = require("puppeteer");
+const readline = require("readline");
+
+ASSET_ADD_PAGE = "https://opensea.io/collection/64-angel-mice/assets/create";
+OPENSEA_HOME = "https://opensea.io";
+
+// this is the parent folder of metamask's manifest.json file
+METAMASK_EXTENSION_LOC =
+  "/home/ben/.config/google-chrome/Default/Extensions/nkbihfbeogaeaoehlefnkodbefgpgknn/10.1.0_0";
+
+const TO_CREATE = [
+    {fname: "./prod/mouse_555555.svg", item_name: "555555"},
+    {fname: "./prod/mouse_555599.svg", item_name: "555599"},
+    {fname: "./prod/mouse_5555cc.svg", item_name: "5555cc"},
+    {fname: "./prod/mouse_5555ff.svg", item_name: "5555ff"},
+    {fname: "./prod/mouse_559955.svg", item_name: "559955"},
+    {fname: "./prod/mouse_559999.svg", item_name: "559999"},
+    {fname: "./prod/mouse_5599cc.svg", item_name: "5599cc"},
+    {fname: "./prod/mouse_5599ff.svg", item_name: "5599ff"},
+    {fname: "./prod/mouse_55cc55.svg", item_name: "55cc55"},
+    {fname: "./prod/mouse_55cc99.svg", item_name: "55cc99"},
+    {fname: "./prod/mouse_55cccc.svg", item_name: "55cccc"},
+    {fname: "./prod/mouse_55ccff.svg", item_name: "55ccff"},
+    {fname: "./prod/mouse_55ff55.svg", item_name: "55ff55"},
+    {fname: "./prod/mouse_55ffcc.svg", item_name: "55ffcc"},
+    {fname: "./prod/mouse_55ffff.svg", item_name: "55ffff"},
+    {fname: "./prod/mouse_995555.svg", item_name: "995555"},
+    {fname: "./prod/mouse_995599.svg", item_name: "995599"},
+    {fname: "./prod/mouse_9955cc.svg", item_name: "9955cc"},
+    {fname: "./prod/mouse_9955ff.svg", item_name: "9955ff"},
+    {fname: "./prod/mouse_999955.svg", item_name: "999955"},
+    {fname: "./prod/mouse_999999.svg", item_name: "999999"},
+    {fname: "./prod/mouse_9999cc.svg", item_name: "9999cc"},
+    {fname: "./prod/mouse_9999ff.svg", item_name: "9999ff"},
+    {fname: "./prod/mouse_99cc55.svg", item_name: "99cc55"},
+    {fname: "./prod/mouse_99cc99.svg", item_name: "99cc99"},
+    {fname: "./prod/mouse_99cccc.svg", item_name: "99cccc"},
+    {fname: "./prod/mouse_99ccff.svg", item_name: "99ccff"},
+    {fname: "./prod/mouse_99ff55.svg", item_name: "99ff55"},
+    {fname: "./prod/mouse_99ff99.svg", item_name: "99ff99"},
+    {fname: "./prod/mouse_99ffcc.svg", item_name: "99ffcc"},
+    {fname: "./prod/mouse_99ffff.svg", item_name: "99ffff"},
+    {fname: "./prod/mouse_cc5555.svg", item_name: "cc5555"},
+    {fname: "./prod/mouse_cc5599.svg", item_name: "cc5599"},
+    {fname: "./prod/mouse_cc55cc.svg", item_name: "cc55cc"},
+    {fname: "./prod/mouse_cc55ff.svg", item_name: "cc55ff"},
+    {fname: "./prod/mouse_cc9955.svg", item_name: "cc9955"},
+    {fname: "./prod/mouse_cc9999.svg", item_name: "cc9999"},
+    {fname: "./prod/mouse_cc99cc.svg", item_name: "cc99cc"},
+    {fname: "./prod/mouse_cc99ff.svg", item_name: "cc99ff"},
+    {fname: "./prod/mouse_cccc55.svg", item_name: "cccc55"},
+    {fname: "./prod/mouse_cccc99.svg", item_name: "cccc99"},
+    {fname: "./prod/mouse_cccccc.svg", item_name: "cccccc"},
+    {fname: "./prod/mouse_ccccff.svg", item_name: "ccccff"},
+    {fname: "./prod/mouse_ccff55.svg", item_name: "ccff55"},
+    {fname: "./prod/mouse_ccff99.svg", item_name: "ccff99"},
+    {fname: "./prod/mouse_ccffcc.svg", item_name: "ccffcc"},
+    {fname: "./prod/mouse_ccffff.svg", item_name: "ccffff"},
+    {fname: "./prod/mouse_ff5555.svg", item_name: "ff5555"},
+    {fname: "./prod/mouse_ff5599.svg", item_name: "ff5599"},
+    {fname: "./prod/mouse_ff55cc.svg", item_name: "ff55cc"},
+    {fname: "./prod/mouse_ff55ff.svg", item_name: "ff55ff"},
+    {fname: "./prod/mouse_ff9955.svg", item_name: "ff9955"},
+    {fname: "./prod/mouse_ff9999.svg", item_name: "ff9999"},
+    {fname: "./prod/mouse_ff99cc.svg", item_name: "ff99cc"},
+    {fname: "./prod/mouse_ff99ff.svg", item_name: "ff99ff"},
+    {fname: "./prod/mouse_ffcc55.svg", item_name: "ffcc55"},
+    {fname: "./prod/mouse_ffcc99.svg", item_name: "ffcc99"},
+];
+
+const ask_question = (query) => {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+  return new Promise((resolve) =>
+    rl.question(query, (ans) => {
+      rl.close();
+      resolve(ans);
+    })
+  );
+};
+
+const get_yes_response = async (q) => {
+  let answer = undefined;
+  while (answer != "yes") {
+    answer = await ask_question(q);
+  }
+};
+
+const init = async () => {
+  const browser = await puppeteer.launch({
+    headless: false,
+    // executablePath: "/usr/bin/google-chrome",
+    userDataDir: "./puppeteer-data/",
+    args: [
+      `--load-extension=${METAMASK_EXTENSION_LOC}`,
+      `--disable-extensions-except=${METAMASK_EXTENSION_LOC}`,
+    ],
+  });
+  return browser;
+};
+
+const go = async (browser, url) => {
+  const page = await browser.newPage();
+  await page.goto(url);
+  return page;
+};
+
+const submit_form = async (page, data) => {
+  const { fname, item_name } = data;
+  const file_input = await page.$("#media");
+  file_input.uploadFile(fname);
+
+  // await page.$eval('#name', (el, value) => el.value = value, item_name);
+  await page.type("#name", item_name);
+
+  const submit_button = await page.$('div[class="AssetForm--action"] span button');
+  submit_button.click();
+};
+
+const main = async () => {
+  try {
+    const browser = await init();
+    const _home_page = await go(browser, OPENSEA_HOME);
+    await get_yes_response("Are you ready to automate upload (yes/no)? ");
+    console.log("upload start...");
+
+
+    for(const data of TO_CREATE) {
+        const page = await go(browser, ASSET_ADD_PAGE);
+        await submit_form(page, data);
+        await get_yes_response("Continue (yes/no)? ");
+    }
+
+    console.log("done!");
+  } catch (e) {
+    console.error(e);
+  } finally {
+    // process.exit();
+  }
+};
+
+main();
