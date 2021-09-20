@@ -1,6 +1,6 @@
 ---
 title: Sparing Supermarket Spending
-date: 09-26-2021
+date: 2021-08-26
 katex: true
 ---
 

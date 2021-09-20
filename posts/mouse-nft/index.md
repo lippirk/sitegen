@@ -1,6 +1,6 @@
 ---
 title: Automating NFT uploads to opensea.io
-date: 09-10-2021
+date: 2021-09-10
 katex: false
 tags: nft, crypto
 ---

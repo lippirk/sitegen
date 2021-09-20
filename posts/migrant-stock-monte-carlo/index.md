@@ -1,6 +1,6 @@
 ---
 title: Migrant Stock Monte Carlo
-date: 07-28-2021
+date: 2021-07-28
 katex: true
 ---
 
