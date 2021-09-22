@@ -1,3 +1,5 @@
+index.pug
+
 dist/
 build/
 .parcel-cache/
