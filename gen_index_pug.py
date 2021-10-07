@@ -12,7 +12,8 @@ posts = [
     "international-migrant-stock",
     "migrant-stock-monte-carlo",
     "sparing-supermarket-spending",
-    "mouse-nft"
+    "mouse-nft",
+    "understanding-projection-matrix"
 ]
 
 
