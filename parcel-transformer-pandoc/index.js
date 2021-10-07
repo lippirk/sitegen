@@ -104,6 +104,8 @@ const pug_of_md = (md_blob, css_file) => {
   |   overflow-y: hidden;
   |   padding-left: 2px;
   |   padding-right: 2px;
+  |   padding-top: 2px;
+  |   padding-bottom: 2px;
   | }
   | </style>
   | <script
