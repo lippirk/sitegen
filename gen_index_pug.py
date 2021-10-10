@@ -13,7 +13,8 @@ posts = [
     "migrant-stock-monte-carlo",
     "sparing-supermarket-spending",
     "mouse-nft",
-    "understanding-projection-matrix"
+    "understanding-projection-matrix",
+    "basic-state-space-model",
 ]
 
 
