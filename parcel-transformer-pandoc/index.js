@@ -16,7 +16,9 @@ const latex_macros = {
   '\\Nuzero': '\\mathbb{N}\\cup\\lbrace 0 \\rbrace',
   '\\N': '\\mathbb{N}',
   '\\vec': '\\bm{#1}',
-  '\\matrix': '\\underline{\\underline{#1}}'
+  '\\matrix': '\\underline{\\underline{#1}}',
+  '\\prob': '\\mathbb{P}',
+  '\\d': '\\mathrm{d}'
 };
 
 const html_of_md = (md) => {
