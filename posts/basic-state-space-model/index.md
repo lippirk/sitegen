@@ -80,7 +80,7 @@ convenience I selected the improper uniform prior for $\delta,$ and assumed that
 I knew $\sigma_y^2$ (this is probably not realistic). Unfortunately the output
 varies quite a lot, but we can at least plot an approximate density for $\delta:$
 
-<img src="./out.svg">
+<img src="./out.svg" style="max-width:100%;">
 
 R code [here](experiment.R). One further avenue of exploration might be to split
 $y_{1:T}$ into several chunks, e.g. $\lbrace y_{1:10},
