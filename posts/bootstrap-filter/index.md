@@ -1,15 +1,14 @@
 ---
-title: Bootstrap particle filter implementation
+title: Bootstrap filter implementation
 date: 2021-10-27
 katex: true
 tags: math
 ---
 
-# Bootstrap particle filter implementation
+# Bootstrap filter implementation
 
 _This is an implementation of the 'boostrap filter' (aka BF) as detailed in
-[this paper](https://arxiv.org/pdf/1911.01383.pdf)._ It is also an improvement
-on a [previous post](../basic-state-space-model/index.md).
+[this paper](https://arxiv.org/pdf/1911.01383.pdf)._
 
 Consider the state-space model distributions (see section 2.1 in the paper)
 
@@ -116,13 +115,12 @@ estimators for $x.$
 
 <img src="./plot-expx.svg" style="max-width:100%"/>
 
-BF seems to predict $x$ well when $g$ has a small gradient, but struggles a bit
-more when the gradient is large. This makes sense, because if the gradient of
-$g$ is large, small changes caused by our random variables $\epsilon,\nu$ could
-drastically change the data $y.$
+BF seems to predict $x$ well when $g$ is sensitive to its argument. This makes
+sense, because if $g$ is sensitive, small changes caused by our
+random variables $\epsilon,\nu$ could drastically change the data $y.$
 
 ## Attributions
 
-[[link]](https://arxiv.org/pdf/1911.01383.pdf) V. Elvira, J. Miguez,
+- [[link]](https://arxiv.org/pdf/1911.01383.pdf) V. Elvira, J. Miguez,
 P. M. Djuric,
 "On the performance of particle filters with adaptive number of particles", to appear in Statistics and Computing, 2021.
