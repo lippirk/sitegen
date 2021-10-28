@@ -15,6 +15,7 @@ posts = [
     "mouse-nft",
     "understanding-projection-matrix",
     "basic-state-space-model",
+    "bootstrap-filter"
 ]
 
 
