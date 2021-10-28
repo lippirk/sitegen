@@ -225,3 +225,23 @@ input[type="range"]::-webkit-slider-thumb:hover {
 input[type="range"]::-moz-range-thumb:hover {
   background: #f0f;
 }
+
+pre {
+  overflow-x: auto;
+}
+
+/* svg img */
+@media only screen and (max-width: 600px) {
+  .svgimg {
+    max-width: 100%
+  }
+}
+
+
+
+/* desktop */
+@media only screen and (min-width: 600px) {
+  .svgimg {
+    width: 100%;
+  }
+}
