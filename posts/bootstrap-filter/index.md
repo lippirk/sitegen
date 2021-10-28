@@ -101,26 +101,25 @@ t          & \in &\{ 1, \cdots, 50\}.
 \end{aligned}
 $$
 
-BF can handle arbitrary $f$ and $g$! As a sanity check, we'll set $f(x) = x,$
-and check that the posterior means for $x$ look sensible
-(the posterior mean for $x_t$ is just the mean of the particles $x_t^{(m)}$);
-we also compare the actual values of $y$ with estimators for $y$ given our
-estimators for $x.$
+BF can handle arbitrary $f$ and $g$! As sanity checks, setting $f(x) = x:$
 
-### $g(x) = 5x + \mathrm{sin}(x):$
+- check that the posterior mean estimates for $x$ (aka mean of the particles)
+look sensible, compared to the actual values of $x$,
+- compare the actual values of $y$ with plug-in estimates for $y$ (using our posterior mean estimators for $x$).
 
-<img src="./plot-5x-sinx.svg" style="max-width:100%"/>
+### $g(x) = 4x + \mathrm{sin}(x):$
+
+<img src="./plot-4x-sinx.svg" class="svgimg"/>
 
 ### $g(x) = \mathrm{e}^x:$
 
-<img src="./plot-expx.svg" style="max-width:100%"/>
+<img src="./plot-expx.svg" class="svgimg" />
 
-BF seems to predict $x$ well when $g$ is sensitive to its argument. This makes
-sense, because if $g$ is sensitive, small changes caused by our
+BF seems to predict $x$ well when $g$ is not very sensitive to its argument.
+This makes sense, because if $g$ is sensitive, small changes caused by our
 random variables $\epsilon,\nu$ could drastically change the data $y.$
 
 ## Attributions
 
 - [[link]](https://arxiv.org/pdf/1911.01383.pdf) V. Elvira, J. Miguez,
-P. M. Djuric,
-"On the performance of particle filters with adaptive number of particles", to appear in Statistics and Computing, 2021.
+P. M. Djuric, "On the performance of particle filters with adaptive number of particles", to appear in Statistics and Computing, 2021.

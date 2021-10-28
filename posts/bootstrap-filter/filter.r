@@ -35,7 +35,7 @@ test <- function() {
     nu <- rnorm(T, mean = 0, sd = sigmay)
 
     g <- function(x) {
-        exp(x)
+        4 * x + sin(x)
     }
 
     xsreal <- cumsum(eps)
@@ -59,10 +59,7 @@ test <- function() {
         c(min(x), max(x))
     }
 
-    add_legend <- function(...) {
-    }
-
-    par(oma=c(0, 0, 0, 0), mfrow=c(2, 1), new=TRUE)
+    par(oma=c(0, 0, 0, 0), mfrow=c(2, 1))
     plot(1:T,
          xs_post_means,
          col='black',
@@ -74,7 +71,7 @@ test <- function() {
     points(1:T, xsreal, col='red', pch=20, cex=0.5)
     lines(spline(1:T, xsreal, n=T), col='red', lty='dotted')
     legend("topright",
-           legend=c("posterior mean", "actual"),
+           legend=c("estimate", "actual"),
            col=c('black', 'red'),
            lty=1:2,
            cex=0.5,
@@ -92,7 +89,7 @@ test <- function() {
     points(1:T, ys, col='red', pch=20, cex=0.5)
     lines(spline(1:T, ys, n=T), col='red', lty='dotted')
     legend("topright",
-           legend=c("y given x", "actual"),
+           legend=c("estimate", "actual"),
            col=c('black', 'red'),
            lty=1:2,
            cex=0.5,
