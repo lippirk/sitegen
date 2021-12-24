@@ -109,6 +109,9 @@ const pug_of_md = (md_blob, css_file) => {
   |   padding-top: 2px;
   |   padding-bottom: 2px;
   | }
+  | .katex {
+  |   font-size: 1em;
+  | }
   | </style>
   | <script
   |   defer
