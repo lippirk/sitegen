@@ -1,5 +1,5 @@
 .PHONY: dev
-dev: dev-fix
+dev: clean-index.pug index.pug dev-fix
 	npm run start-unspec
 
 .PHONY: dev-fix
