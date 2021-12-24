@@ -29,27 +29,23 @@ $x_t,$ the _actual_ number of people with said disease.
 
 This is declared in the paper, but we derive it here.
 
-By applying Bayes' theorem, noting that terms containing only $y$'s
+Noting that terms containing only $y$'s
 are just constants w.r.t $x$, and using modelling assumptions:
 
 $$
-p(x_t | y_{1:t}) \propto p(x_t, y_{1:t})\\
-=       \int p(x_t, x_{t-1}, y_{1:t})\d x_{t-1}\\
-\propto \int p(x_t, x_{t-1} | y_{1:t})\d x_{t-1}\\
-\propto p(y_t | y_{1:t-1})\int p(x_t, x_{t-1}, y_t | y_{1:t-1}) \d x_{t-1}\\
+p(x_t | y_{1:t})
+=       \int p(x_t, x_{t-1} | y_{1:t})\d x_{t-1}\\
+\propto \int p(x_t, x_{t-1}, y_t | y_{1:t-1}) \d x_{t-1}\\
 \propto \int p(x_t, y_t | y_{1:t-1}, x_{t-1})p(x_{t-1} | y_{1:t-1}) \d x_{t-1}\\
-\propto p(y_t | x_t) \int p(x_t | x_{t-1})p(x_{t-1} | y_{1:t-1}) \d x_{t-1}.
+\propto \int p(y_t | x_t) p(x_t | x_{t-1})p(x_{t-1} | y_{1:t-1}) \d x_{t-1}.
 $$
 
-## BF intuition
-
-BF uses the above decomposition.  BF is recursive; the
-idea is to assume that we have some estimate for $p(x_{t - 1} | y_{1:t-1}),$ and
-some 'particles' (aka samples) for $X_{t-1}.$ We can draw particles for $X_t,$
-because we know $p(x_t | x_{t-1})$ (it is a modelling assumption). To find which
-particles are likely, given our measurement $y_t,$ we do some re-weighting with
-the likelihood $p(y_t | x_t)$ - this gives us an approximation for $p(x_t |
-y_{1:t})!$
+In other words, we can write the filtering problem
+at time $t$ in terms of the filtering problem at time $t-1$.
+Assume we can draw from $p(x_t | x_{t-1})$ and $p(y_t | x_t)$
+and that we have some particles (aka samples) from $p(x_{t-1} | y_{1:t-1})$,
+then we can use importance sampling to draw particles from $p(x_t | y_{1:t}).$
+This is exactly what BF does.
 
 ## BF Implementation
 
@@ -121,5 +117,5 @@ random variables $\epsilon,\nu$ could drastically change the data $y.$
 
 ## Attributions
 
-- [[link]](https://arxiv.org/pdf/1911.01383.pdf) V. Elvira, J. Miguez,
+- [[link](https://arxiv.org/pdf/1911.01383.pdf)] V. Elvira, J. Miguez,
 P. M. Djuric, "On the performance of particle filters with adaptive number of particles", to appear in Statistics and Computing, 2021.
