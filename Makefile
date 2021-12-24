@@ -23,4 +23,8 @@ test-build: build
 
 .PHONY: clean
 clean: clean-index.pug
-	rm -rf build/ dist/ .parcel-cache/
+	rm -rf build/* dist/ .parcel-cache/
+
+.PHONY: deploy
+deploy: clean build
+	python deploy-github.py

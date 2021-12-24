@@ -1,7 +1,6 @@
 index.pug
 
 dist/
-build/
 .parcel-cache/
 node_modules/
 .ipynb_checkpoints/
