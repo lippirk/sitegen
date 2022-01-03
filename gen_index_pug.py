@@ -15,7 +15,8 @@ posts = [
     "mouse-nft",
     "understanding-projection-matrix",
     "basic-state-space-model",
-    "bootstrap-filter"
+    "bootstrap-filter",
+    "2d-mappings"
 ]
 
 
