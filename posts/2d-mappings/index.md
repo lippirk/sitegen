@@ -1,10 +1,10 @@
 ---
-title: 2D mapping visualizations
+title: 2D linear visualizations
 date: 2022-01-03
 katex: true
 ---
 
-# 2D Linear visualizations
+# 2D linear visualizations
 
 ## Householder transformation
 
