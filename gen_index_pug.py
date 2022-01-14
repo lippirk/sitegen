@@ -16,7 +16,8 @@ posts = [
     "understanding-projection-matrix",
     "basic-state-space-model",
     "bootstrap-filter",
-    "2d-mappings"
+    "2d-mappings",
+    "wordle"
 ]
 
 
