@@ -41,9 +41,6 @@ body, html {
   align-items: center;
   flex-direction: column;
   width: 100%;
-  /* min-height = window height - height of navbar */
-  /* min-height: calc(100vh - 2.5em); */
-  height: calc(100vh - 2.5em);
 }
 
 .container {
