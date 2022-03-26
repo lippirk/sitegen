@@ -5,6 +5,9 @@ from git import Repo
 
 branch      = 'main'
 
+def error(x):
+    raise Exception(x)
+
 def bump(version_str, what='minor'):
     m = {
         'major': 0,
@@ -52,6 +55,10 @@ def dry_run(d):
 
 def wet_run(repo, build_repo, d):
     dry_run(d)
+
+    if d['new_tag'] in repo.tags or \
+       d['new_tag'] in build_repo.tags:
+        error(f"tag {d['new_tag']} already exists")
 
     print(f"commiting in ./build")
     build_repo.git.add(all=True)
