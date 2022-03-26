@@ -1,5 +1,6 @@
 index.pug
 
+cv/
 dist/
 .parcel-cache/
 node_modules/
