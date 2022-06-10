@@ -1,3 +1,6 @@
+"""
+simple script for generating index.pug (this is mainly a selection of links)
+"""
 from pathlib import Path
 from io import StringIO
 from typing import List
@@ -19,7 +22,6 @@ posts = [
     "2d-mappings",
     "wordle"
 ]
-
 
 def get_markdown_meta(path):
     d = {}
@@ -57,7 +59,7 @@ def get_meta(base_path: Path):
     return meta
 
 
-def gen_index_pug(post_metas: List):
+def gen_index_pug(post_metas: List, edi_diss_metas: List):
     buf = StringIO()
 
     def add(s):
@@ -65,6 +67,7 @@ def gen_index_pug(post_metas: List):
     add(f"extends layout.pug")
     add(f"")
     add(f"block content")
+    add(f"  h3 Posts")
     add(f"  ul")
     for m in post_metas:
         route = m[ROUTE]
@@ -72,6 +75,15 @@ def gen_index_pug(post_metas: List):
         date = m[DATE]
         add(f"    li")
         add(f'      | [<a href="{route}">html</a>] {date} - {title}')
+    add(f"")
+    add(f"  h3 MSc Diss/Extreme Value Theory")
+    add(f"  ul")
+    for m in edi_diss_metas:
+           route = m[ROUTE]
+           title = m[TITLE]
+           date = m[DATE]
+           add(f"    li")
+           add(f'      | [<a href="{route}">html</a>] {title}')
     return buf.getvalue()
 
 
@@ -79,7 +91,12 @@ def main():
     post_metas = sorted([get_meta(Path(f"./posts/{p}")) for p in posts],
                         key=lambda x: x["date"],
                         reverse=True)
-    OUT.write_text(gen_index_pug(post_metas))
+    edi_diss_metas = sorted([get_meta(p) for p in Path("edi_diss").glob("*") if p.is_dir()],
+                             key=lambda x: x["date"],
+                             reverse=True)
+    OUT.write_text(
+        gen_index_pug(post_metas, edi_diss_metas)
+    )
 
 
 if __name__ == "__main__":
