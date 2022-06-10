@@ -18,7 +18,8 @@ const latex_macros = {
   '\\vec': '\\bm{#1}',
   '\\matrix': '\\underline{\\underline{#1}}',
   '\\prob': '\\mathbb{P}',
-  '\\d': '\\mathrm{d}'
+  '\\d': '\\mathrm{d}',
+  '\\pdiff': '\\frac{\\partial{#1}}{\\partial{#2}}',
 };
 
 const html_of_md = ({md, md_dir, metadata}) => {
