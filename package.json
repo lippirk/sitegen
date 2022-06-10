@@ -18,6 +18,7 @@
     "parcel-transformer-pandoc": "file:parcel-transformer-pandoc"
   },
   "dependencies": {
-    "@svgdotjs/svg.js": "^3.1.1"
+    "@svgdotjs/svg.js": "^3.1.1",
+    "highlight.js": "^11.5.1"
   }
 }

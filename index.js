@@ -1,3 +1,9 @@
+import hljs from "highlight.js";
+hljs.registerLanguage('julia', require('highlight.js/lib/languages/julia'));
+hljs.registerLanguage('js', require('highlight.js/lib/languages/javascript'));
+hljs.registerLanguage('r', require('highlight.js/lib/languages/r'));
+import 'highlight.js/styles/stackoverflow-light.css';
+
 const onload = () => {
   // Z button
   const ztoggle = document.getElementById("ztoggle");
@@ -17,6 +23,9 @@ const onload = () => {
       el.parentElement.classList.add("inlinegraphfig")
     }
   }
+
+  // highlight.js
+  hljs.highlightAll();
 };
 
 onload();
