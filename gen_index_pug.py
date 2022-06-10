@@ -10,6 +10,7 @@ ROUTE = "__route"
 TITLE = "title"
 DATE = "date"
 OUT = Path("./index.pug")
+OUT_DISS = Path("./edi_diss.pug")
 
 posts = [
     "international-migrant-stock",
@@ -58,7 +59,6 @@ def get_meta(base_path: Path):
             f"post {base_path} must have either an index.md or index.pug, but neither existed")
     return meta
 
-
 def gen_index_pug(post_metas: List, edi_diss_metas: List):
     buf = StringIO()
 
@@ -76,6 +76,26 @@ def gen_index_pug(post_metas: List, edi_diss_metas: List):
         add(f"    li")
         add(f'      | [<a href="{route}">html</a>] {date} - {title}')
     add(f"")
+    add(f"  div(style='display:none;')")
+    add(f"    a(href='./edi_diss.pug') edi diss")
+    add(f"    h3 MSc Diss/Extreme Value Theory")
+    add(f"    ul")
+    for m in edi_diss_metas:
+           route = m[ROUTE]
+           title = m[TITLE]
+           date = m[DATE]
+           add(f"      li")
+           add(f'        | [<a href="{route}">html</a>] {title}')
+    return buf.getvalue()
+
+def gen_edi_diss_pug(edi_diss_metas: List):
+    buf = StringIO()
+
+    def add(s):
+        print(s, file=buf)
+    add(f"extends layout.pug")
+    add(f"")
+    add(f"block content")
     add(f"  h3 MSc Diss/Extreme Value Theory")
     add(f"  ul")
     for m in edi_diss_metas:
@@ -86,7 +106,6 @@ def gen_index_pug(post_metas: List, edi_diss_metas: List):
            add(f'      | [<a href="{route}">html</a>] {title}')
     return buf.getvalue()
 
-
 def main():
     post_metas = sorted([get_meta(Path(f"./posts/{p}")) for p in posts],
                         key=lambda x: x["date"],
@@ -96,6 +115,9 @@ def main():
                              reverse=True)
     OUT.write_text(
         gen_index_pug(post_metas, edi_diss_metas)
+    )
+    OUT_DISS.write_text(
+        gen_edi_diss_pug(edi_diss_metas)
     )
 
 
