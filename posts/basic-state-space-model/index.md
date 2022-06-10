@@ -9,7 +9,7 @@ tags: math
 
 _EDIT: I wrote this before I knew about particle filters, and they are much
 better! I implement a bootstrap filter from a paper in this
-[post](../bootstrap-filter)._
+[post](../bootstrap-filter/index)._
 
 Imagine the following process:
 

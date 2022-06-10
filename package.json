@@ -11,15 +11,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@parcel/transformer-inline-string": "^2.0.0-rc.0",
-    "@parcel/transformer-pug": "^2.0.0-rc.0",
-    "parcel": "^2.0.0-rc.0",
+    "@parcel/transformer-inline-string": "^2.6.0",
+    "@parcel/transformer-pug": "^2.6.0",
+    "parcel": "^2.6.0",
     "parcel-namer-namer": "file:parcel-namer-namer",
     "parcel-transformer-pandoc": "file:parcel-transformer-pandoc"
   },
   "dependencies": {
-    "@svgdotjs/svg.js": "^3.1.1",
-    "puppeteer": "^10.2.0",
-    "puppeteer-extra": "^3.1.18"
+    "@svgdotjs/svg.js": "^3.1.1"
   }
 }
