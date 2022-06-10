@@ -21,15 +21,22 @@ const latex_macros = {
   '\\d': '\\mathrm{d}'
 };
 
-const html_of_md = (md) => {
+const html_of_md = ({md, md_dir, metadata}) => {
+  // lua filter path must be relative to the md dir, because
+  // the working dir of the pandoc process is the md dir
+  const lua_include_code_filter = path.relative(md_dir, 'lua-filters/include-code-files.lua');
+  const use_katex = metadata.hasOwnProperty("katex") && metadata["katex"];
   const child = spawnSync(
     "pandoc",
     ["--from", "markdown+footnotes",
+     `--lua-filter=${lua_include_code_filter}`,
      "--to", "html5",
-      "--katex",
-      "--standalone",
+     use_katex ? "--katex" : "",
+     "--standalone",
     ],
-    { input: md }
+    { input: md,
+      cwd: md_dir
+    }
   );
   if (child.error) {
     const err = `pandoc conversion failed: ${child.error}`;
@@ -74,9 +81,9 @@ const split_md = md => {
          }
 };
 
-const pug_of_md = (md_blob, css_file) => {
+const pug_of_md = ({md_blob, css_file, md_dir}) => {
   const {metadata, md_content} = split_md(md_blob);
-  const html = html_of_md(md_content);
+  const html = html_of_md({md:md_content, md_dir, metadata});
   const body = body_of_html(html);
   const content = with_pipes(body);
   const extra_css = !css_file ?  '' :
@@ -162,7 +169,7 @@ const transformer = new Transformer({
     const css_file = get_css_file(asset_dir);
     const content = await asset.getCode();
     asset.type = "pug";
-    const pug = pug_of_md(content, css_file);
+    const pug = pug_of_md({md_blob:content, css_file, md_dir:asset_dir});
     asset.setCode(pug);
     asset.filePath = path.join(asset_dir, 'index.pug');
     return [asset];
