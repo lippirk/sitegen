@@ -19,12 +19,16 @@ def bump(version_str, what='minor'):
     return '.'.join([str(x) for x in vs])
 
 def get_data(repo, build_repo):
+    nsort = lambda v: tuple(map(int, str(v).split('.')))
     assert repo.active_branch.name == branch, f"checkout {branch}"
 
-    last_tag = repo.tags[-1]
+    # have to sort tags, otherwise they come in a funny order like [0.1,0.10,...,0.9]
+    repo_tags = sorted(repo.tags, key=nsort)
+    last_tag = repo_tags[-1]
     assert repo.head.commit != last_tag.commit, "nothing new since last tag"
 
-    build_last_tag = build_repo.tags[-1]
+    build_tags = sorted(repo.tags, key=nsort)
+    build_last_tag = build_tags[-1]
     assert build_last_tag.name == last_tag.name, "build repo out of sync"
 
     new_commits = list(repo.iter_commits(f"{last_tag.commit}..HEAD"))
@@ -87,7 +91,7 @@ def main():
     repo = Repo('.')
     build_repo = Repo('./build')
     d = get_data(repo, build_repo)
-    #  dry_run(d)
+    # dry_run(d)
     wet_run(repo, build_repo, d)
 
 if __name__ == "__main__":
