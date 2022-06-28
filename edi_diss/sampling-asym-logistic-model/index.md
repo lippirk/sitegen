@@ -1,5 +1,5 @@
 ---
-title: (wip) Asymmetric logistic exponent measure
+title: Sampling from an asymmetric logistic model
 date: 2022-06-07
 katex: true
 ---
