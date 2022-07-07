@@ -26,11 +26,13 @@ const html_of_md = ({md, md_dir, metadata}) => {
   // lua filter path must be relative to the md dir, because
   // the working dir of the pandoc process is the md dir
   const lua_include_code_filter = path.relative(md_dir, 'lua-filters/include-code-files.lua');
+  const lua_include_file_filter = path.relative(md_dir, 'lua-filters/include-files.lua');
   const use_katex = metadata.hasOwnProperty("katex") && metadata["katex"];
   const child = spawnSync(
     "pandoc",
-    ["--from", "markdown+footnotes",
+    ["--from", "markdown+footnotes-markdown_in_html_blocks",
      `--lua-filter=${lua_include_code_filter}`,
+     `--lua-filter=${lua_include_file_filter}`,
      "--to", "html5",
      use_katex ? "--katex" : "",
      "--standalone",
